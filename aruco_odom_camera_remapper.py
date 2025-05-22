@@ -26,7 +26,7 @@ class ArucoRepublisher(Node):
         
         self.get_logger().info(f"Kamera-Offset eingestellt: {self.camera_offset}")
         
-        # Subscriber und Publisher
+        
         self.subscription = self.create_subscription(
             PoseStamped,
             'aruco_odom',
@@ -61,7 +61,7 @@ class ArucoRepublisher(Node):
         corrected_position.y = original_pose.position.y - self.camera_offset[1]
         corrected_position.z = original_pose.position.z - self.camera_offset[2]
         
-        # Ergebnis zusammenbauen
+        
         rotated_msg.pose.position = corrected_position
         rotated_msg.pose.orientation.x = rotated_quat[0]
         rotated_msg.pose.orientation.y = rotated_quat[1]
